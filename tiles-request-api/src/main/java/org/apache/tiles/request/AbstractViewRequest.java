@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  * Base class for "view" requests, i.e. requests created into view technologies,
- * such as JSP, Velocity and Freemarker. In particular, all calls to
+ * such as JSP and Velocity. In particular, all calls to
  * {@link #dispatch(String)} will cause an inclusion and never a forward.
  *
  * @version $Rev$ $Date$
