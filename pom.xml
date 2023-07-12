@@ -52,7 +52,6 @@ under the License.
         <module>tiles-request-portlet</module>
         <module>tiles-request-portlet-wildcard</module>
         <module>tiles-request-jsp</module>
-        <module>tiles-request-freemarker</module>
         <module>tiles-request-velocity</module>
         <module>tiles-request-mustache</module>
         <module>assembly</module>
@@ -278,11 +277,6 @@ under the License.
                         <groupId>dom4j</groupId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.freemarker</groupId>
-                <artifactId>freemarker</artifactId>
-                <version>2.3.15</version>
             </dependency>
             <dependency>
                 <groupId>com.github.spullara.mustache.java</groupId>
