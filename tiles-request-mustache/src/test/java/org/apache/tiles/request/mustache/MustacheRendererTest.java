@@ -21,6 +21,15 @@
 package org.apache.tiles.request.mustache;
 
 
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.isA;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -31,18 +40,14 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import com.github.mustachejava.DefaultMustacheFactory;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.ApplicationResource;
+import org.apache.tiles.request.Request;
 import org.apache.tiles.request.render.CannotRenderException;
 import org.apache.tiles.request.render.Renderer;
-import org.apache.tiles.request.Request;
 import org.junit.Test;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.github.mustachejava.DefaultMustacheFactory;
 
 /**
  * Tests {@link MustacheRenderer}.

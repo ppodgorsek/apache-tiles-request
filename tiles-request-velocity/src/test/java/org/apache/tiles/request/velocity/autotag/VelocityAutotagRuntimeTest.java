@@ -20,20 +20,22 @@
  */
 package org.apache.tiles.request.velocity.autotag;
 
-import static org.easymock.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.eq;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.io.Writer;
 import java.util.Map;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import org.apache.tiles.autotag.core.runtime.ModelBody;
 import org.apache.tiles.request.ApplicationAccess;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
 import org.apache.tiles.request.velocity.VelocityRequest;
-import org.apache.tiles.request.velocity.autotag.VelocityAutotagRuntime;
-import org.apache.tiles.request.velocity.autotag.VelocityModelBody;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.runtime.parser.node.ASTBlock;
 import org.apache.velocity.runtime.parser.node.ASTMap;
@@ -41,7 +43,12 @@ import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.tools.view.ViewToolContext;
 import org.junit.Test;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 public class VelocityAutotagRuntimeTest {
+
     @Test
     public void testCreateRequest() {
         InternalContextAdapter context = createMock(InternalContextAdapter.class);

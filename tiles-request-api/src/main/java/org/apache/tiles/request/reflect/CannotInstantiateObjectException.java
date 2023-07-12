@@ -29,10 +29,14 @@ import org.apache.tiles.request.RequestException;
  */
 public class CannotInstantiateObjectException extends RequestException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = 1877777256833428779L;
+
+	/**
      * Constructor.
      */
     public CannotInstantiateObjectException() {
+    	super();
     }
 
     /**

@@ -20,9 +20,14 @@
  */
 package org.apache.tiles.request.collection;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,7 +63,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Sets up the test.
      */
-    @SuppressWarnings("unchecked")
     @Before
     public void setUp() {
         extractor = createMock(HasKeys.class);
@@ -93,7 +97,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Tests {@link Collection#contains(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsValue() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -115,7 +118,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Tests {@link Collection#contains(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsValueFalse() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -138,7 +140,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Tests {@link Collection#containsAll(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsAll() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -163,7 +164,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Tests {@link Collection#containsAll(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsAllFalse() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -188,7 +188,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Test method for {@link Collection#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmpty() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -204,7 +203,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Test method for {@link Collection#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIterator() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -218,14 +216,13 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
         replay(extractor, keys);
         Iterator<Integer> entryIt = coll.iterator();
         assertTrue(entryIt.hasNext());
-        assertEquals(new Integer(2), entryIt.next());
+        assertEquals(Integer.valueOf(2), entryIt.next());
         verify(extractor, keys);
     }
 
     /**
      * Test method for {@link Collection#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test(expected = UnsupportedOperationException.class)
     public void testIteratorRemove() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -267,7 +264,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#size()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testSize() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -287,7 +283,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Test method for {@link Collection#toArray()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testToArray() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -312,7 +307,6 @@ public class ReadOnlyEnumerationMapValuesCollectionTest {
     /**
      * Test method for {@link Collection#toArray(Object[])}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testToArrayTArray() {
         Enumeration<String> keys = createMock(Enumeration.class);

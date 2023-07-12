@@ -29,10 +29,14 @@ import org.apache.tiles.request.RequestException;
  */
 public class RenderException extends RequestException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -4573346867875292947L;
+
+	/**
      * Constructor.
      */
     public RenderException() {
+    	super();
     }
 
     /**

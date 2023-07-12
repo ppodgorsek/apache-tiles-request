@@ -20,14 +20,16 @@
  */
 package org.apache.tiles.request;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,12 +60,12 @@ public class AbstractClientRequestTest {
      */
     @Before
     public void setUp() {
-        applicationContext = createMock(ApplicationContext.class);
+        applicationContext = EasyMock.createMock(ApplicationContext.class);
         applicationScope = new HashMap<String, Object>();
-        request = createMockBuilder(AbstractClientRequest.class)
+        request = EasyMock.createMockBuilder(AbstractClientRequest.class)
                 .withConstructor(applicationContext).createMock();
 
-        expect(applicationContext.getApplicationScope()).andReturn(applicationScope).anyTimes();
+        EasyMock.expect(applicationContext.getApplicationScope()).andReturn(applicationScope).anyTimes();
     }
 
     /**
@@ -74,14 +76,14 @@ public class AbstractClientRequestTest {
     public void testDispatch() throws IOException {
         Map<String, Object> requestScope = new HashMap<String, Object>();
 
-        expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope).anyTimes();
+        EasyMock.expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope).anyTimes();
         request.doForward("/my/path.html");
         request.doInclude("/my/path2.html");
 
-        replay(request, applicationContext);
+        EasyMock.replay(request, applicationContext);
         request.dispatch("/my/path.html");
         request.dispatch("/my/path2.html");
-        verify(request, applicationContext);
+        EasyMock.verify(request, applicationContext);
     }
 
     /**
@@ -92,13 +94,13 @@ public class AbstractClientRequestTest {
     public void testInclude() throws IOException {
         Map<String, Object> requestScope = new HashMap<String, Object>();
 
-        expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope).anyTimes();
+        EasyMock.expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope).anyTimes();
         request.doInclude("/my/path2.html");
 
-        replay(request, applicationContext);
+        EasyMock.replay(request, applicationContext);
         request.include("/my/path2.html");
         assertTrue((Boolean)request.getContext(Request.REQUEST_SCOPE).get(AbstractRequest.FORCE_INCLUDE_ATTRIBUTE_NAME));
-        verify(request, applicationContext);
+        EasyMock.verify(request, applicationContext);
     }
 
     /**
@@ -106,24 +108,23 @@ public class AbstractClientRequestTest {
      */
     @Test
     public void testGetApplicationContext() {
-        replay(request, applicationContext);
+    	EasyMock.replay(request, applicationContext);
         assertEquals(applicationContext, request.getApplicationContext());
-        verify(request, applicationContext);
+        EasyMock.verify(request, applicationContext);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.AbstractClientRequest#getContext(java.lang.String)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetContext() {
-        Map<String, Object> scope = createMock(Map.class);
+        Map<String, Object> scope = EasyMock.createMock(Map.class);
 
-        expect(request.getContext("myScope")).andReturn(scope);
+        EasyMock.expect(request.getContext("myScope")).andReturn(scope);
 
-        replay(request, applicationContext, scope);
+        EasyMock.replay(request, applicationContext, scope);
         assertEquals(scope, request.getContext("myScope"));
-        verify(request, applicationContext, scope);
+        EasyMock.verify(request, applicationContext, scope);
     }
 
     /**
@@ -133,11 +134,11 @@ public class AbstractClientRequestTest {
     public void testGetAvailableScopes() {
         String[] scopes = new String[] {"one", "two", "three"};
 
-        expect(request.getAvailableScopes()).andReturn(Arrays.asList(scopes));
+        EasyMock.expect(request.getAvailableScopes()).andReturn(Arrays.asList(scopes));
 
-        replay(request, applicationContext);
+        EasyMock.replay(request, applicationContext);
         assertArrayEquals(scopes, request.getAvailableScopes().toArray());
-        verify(request, applicationContext);
+        EasyMock.verify(request, applicationContext);
     }
 
     /**
@@ -145,9 +146,9 @@ public class AbstractClientRequestTest {
      */
     @Test
     public void testGetApplicationScope() {
-        replay(request, applicationContext);
+    	EasyMock.replay(request, applicationContext);
         assertEquals(applicationScope, request.getApplicationScope());
-        verify(request, applicationContext);
+        EasyMock.verify(request, applicationContext);
     }
 
 }

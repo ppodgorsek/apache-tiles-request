@@ -22,9 +22,9 @@ package org.apache.tiles.request.servlet.extractor;
 
 import java.util.Enumeration;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.tiles.request.attribute.AttributeExtractor;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Extracts attributes from request scope.
@@ -57,7 +57,6 @@ public class RequestScopeExtractor implements AttributeExtractor {
         request.removeAttribute(name);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Enumeration<String> getKeys() {
         return request.getAttributeNames();

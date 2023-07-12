@@ -20,9 +20,14 @@
  */
 package org.apache.tiles.request.collection;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -54,7 +59,6 @@ public class KeySetTest {
     /**
      * Sets up the test.
      */
-    @SuppressWarnings("unchecked")
     @Before
     public void setUp() {
         extractor = createMock(HasKeys.class);
@@ -144,7 +148,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmpty() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -160,7 +163,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmptyTrue() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -176,7 +178,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIterator() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -196,7 +197,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test(expected = UnsupportedOperationException.class)
     public void testIteratorRemove() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -238,7 +238,6 @@ public class KeySetTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#size()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testSize() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -258,7 +257,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#toArray()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testToArray() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -279,7 +277,6 @@ public class KeySetTest {
     /**
      * Test method for {@link Set#toArray(Object[])}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testToArrayTArray() {
         Enumeration<String> keys = createMock(Enumeration.class);

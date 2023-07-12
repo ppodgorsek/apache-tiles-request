@@ -27,10 +27,14 @@ package org.apache.tiles.request;
  */
 public class RequestException extends RuntimeException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -1240335604658715444L;
+
+	/**
      * Constructor.
      */
     public RequestException() {
+    	super();
     }
 
     /**

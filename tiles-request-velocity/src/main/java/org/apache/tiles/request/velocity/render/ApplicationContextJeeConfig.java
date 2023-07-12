@@ -25,11 +25,11 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.servlet.ServletUtil;
 import org.apache.velocity.tools.view.JeeConfig;
+
+import jakarta.servlet.ServletContext;
 
 /**
  * Implements JeeConfig to use parameters set through

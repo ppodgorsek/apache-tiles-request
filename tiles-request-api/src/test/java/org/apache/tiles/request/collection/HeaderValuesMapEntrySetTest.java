@@ -20,9 +20,14 @@
  */
 package org.apache.tiles.request.collection;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -94,7 +99,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Tests {@link Set#contains(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContains() {
         Map.Entry<String, String[]> entry = createMock(Map.Entry.class);
@@ -118,7 +122,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Tests {@link Set#containsAll(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsAll() {
         Enumeration<String> values1 = createMock(Enumeration.class);
@@ -154,7 +157,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Tests {@link Set#containsAll(Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsAllFalse() {
         Enumeration<String> values1 = createMock(Enumeration.class);
@@ -177,7 +179,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Test method for {@link Set#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmpty() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -193,7 +194,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Test method for {@link Set#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIterator() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -222,7 +222,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Test method for {@link Set#iterator()}.
      */
-    @SuppressWarnings("unchecked")
     @Test(expected = UnsupportedOperationException.class)
     public void testIteratorRemove() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -264,7 +263,6 @@ public class HeaderValuesMapEntrySetTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#size()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testSize() {
         Enumeration<String> keys = createMock(Enumeration.class);

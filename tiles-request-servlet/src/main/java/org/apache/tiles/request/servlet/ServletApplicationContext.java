@@ -27,8 +27,6 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.ApplicationResource;
 import org.apache.tiles.request.collection.ReadOnlyEnumerationMap;
@@ -36,6 +34,8 @@ import org.apache.tiles.request.collection.ScopeMap;
 import org.apache.tiles.request.locale.URLApplicationResource;
 import org.apache.tiles.request.servlet.extractor.ApplicationScopeExtractor;
 import org.apache.tiles.request.servlet.extractor.InitParameterExtractor;
+
+import jakarta.servlet.ServletContext;
 
 /**
  * Servlet-based implementation of the TilesApplicationContext interface.

@@ -28,10 +28,14 @@ package org.apache.tiles.request.render;
  */
 public class CannotRenderException extends RenderException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -3488529565581703493L;
+
+	/**
      * Constructor.
      */
     public CannotRenderException() {
+    	super();
     }
 
     /**

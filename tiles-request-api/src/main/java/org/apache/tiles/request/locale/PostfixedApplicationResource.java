@@ -23,9 +23,9 @@ package org.apache.tiles.request.locale;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.Locale;
+import java.util.Set;
+
 import org.apache.tiles.request.ApplicationResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

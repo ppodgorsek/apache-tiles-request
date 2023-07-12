@@ -20,19 +20,23 @@
  */
 package org.apache.tiles.request.velocity.render;
 
-import static org.easymock.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
 import org.apache.tiles.request.servlet.ServletApplicationContext;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import jakarta.servlet.ServletContext;
 
 /**
  * Tests {@link ApplicationContextJeeConfig}.
@@ -111,7 +115,6 @@ public class ApplicationContextJeeConfigTest {
         params.put("one", "value1");
         config = new ApplicationContextJeeConfig(applicationContext, params);
         replay(servletContext);
-        @SuppressWarnings("unchecked")
         Enumeration<String> names = config.getInitParameterNames();
         assertTrue(names.hasMoreElements());
         assertEquals("one", names.nextElement());

@@ -29,10 +29,14 @@ import org.apache.tiles.request.RequestException;
  */
 public class CannotAccessMethodException extends RequestException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -3243273501389045606L;
+
+	/**
      * Constructor.
      */
     public CannotAccessMethodException() {
+    	super();
     }
 
     /**

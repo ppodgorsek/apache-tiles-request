@@ -23,7 +23,6 @@ package org.apache.tiles.request.velocity.render;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.velocity.tools.view.VelocityView;
 

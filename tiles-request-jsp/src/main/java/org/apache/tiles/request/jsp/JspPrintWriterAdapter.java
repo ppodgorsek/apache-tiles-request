@@ -23,10 +23,10 @@ package org.apache.tiles.request.jsp;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.jsp.JspWriter;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.jsp.JspWriter;
 
 /**
  * Adapts a {@link JspWriter} to a {@link PrintWriter}, swallowing {@link IOException}.

@@ -21,7 +21,6 @@
 package org.apache.tiles.request;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 

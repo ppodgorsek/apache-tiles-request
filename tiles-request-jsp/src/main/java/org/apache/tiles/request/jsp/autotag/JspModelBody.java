@@ -23,11 +23,11 @@ package org.apache.tiles.request.jsp.autotag;
 import java.io.IOException;
 import java.io.Writer;
 
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.JspFragment;
-
 import org.apache.tiles.autotag.core.runtime.AbstractModelBody;
+
+import jakarta.servlet.jsp.JspContext;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.JspFragment;
 
 /**
  * The body abstraction in a JSP tag.

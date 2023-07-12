@@ -23,13 +23,13 @@ package org.apache.tiles.request.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-
-import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.ApplicationAccess;
-import org.apache.tiles.request.RequestWrapper;
+import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
+import org.apache.tiles.request.RequestWrapper;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 /**
  * Utilities for Tiles request servlet support.

@@ -20,9 +20,11 @@
  */
 package org.apache.tiles.request;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -54,7 +56,6 @@ public class ApplicationContextWrapperTest {
     /**
      * Test method for {@link org.apache.tiles.request.ApplicationContextWrapper#getApplicationScope()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetApplicationScope() {
         ApplicationContext wrappedContext = createMock(ApplicationContext.class);
@@ -87,7 +88,6 @@ public class ApplicationContextWrapperTest {
     /**
      * Test method for {@link org.apache.tiles.request.ApplicationContextWrapper#getInitParams()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetInitParams() {
         ApplicationContext wrappedContext = createMock(ApplicationContext.class);
@@ -125,7 +125,6 @@ public class ApplicationContextWrapperTest {
      * Test method for {@link org.apache.tiles.request.ApplicationContextWrapper#getResources(java.lang.String)}.
      * @throws IOException If something goes wrong.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetResources() throws IOException {
         ApplicationContext wrappedContext = createMock(ApplicationContext.class);

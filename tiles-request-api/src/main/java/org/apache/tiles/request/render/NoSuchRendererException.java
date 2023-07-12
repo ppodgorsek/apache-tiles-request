@@ -28,7 +28,10 @@ package org.apache.tiles.request.render;
  */
 public class NoSuchRendererException extends RenderException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -671111658371490298L;
+
+	/**
      * Constructor.
      */
     public NoSuchRendererException() {

@@ -28,11 +28,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
-
 import org.apache.tiles.request.AbstractViewRequest;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.DispatchRequest;
@@ -41,6 +36,11 @@ import org.apache.tiles.request.jsp.extractor.ScopeExtractor;
 import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.apache.tiles.request.servlet.ServletRequest;
 import org.apache.tiles.request.servlet.ServletUtil;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * Context implementation used for executing tiles within a

@@ -20,9 +20,14 @@
  */
 package org.apache.tiles.request.collection;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -60,7 +65,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#hashCode()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testHashCode() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -120,7 +124,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#containsValue(java.lang.Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsValue() {
         assertFalse(map.containsValue(1));
@@ -155,7 +158,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#containsValue(java.lang.Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testContainsValueFalse() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -189,7 +191,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#equals(java.lang.Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testEqualsObject() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -239,7 +240,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#get(java.lang.Object)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGet() {
         Enumeration<String> values2 = createMock(Enumeration.class);
@@ -259,7 +259,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmpty() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -275,7 +274,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#isEmpty()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testIsEmptyTrue() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -325,7 +323,6 @@ public class HeaderValuesMapTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.HeaderValuesMap#size()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testSize() {
         Enumeration<String> keys = createMock(Enumeration.class);
