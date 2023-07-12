@@ -7,7 +7,5 @@
    The binary distribution contains software developed by:
 
    SpringSource: http://www.springsource.com/
-   Visigoth Software Society (Freemarker): http://freemarker.org/
    Codehaus (MVEL): http://mvel.codehaus.org/
    Sam Pullara (Mustache Java): https://github.com/spullara/mustache.java/
-
