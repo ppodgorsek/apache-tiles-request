@@ -22,9 +22,9 @@ package org.apache.tiles.request.jsp.extractor;
 
 import java.util.Enumeration;
 
-import javax.servlet.jsp.PageContext;
-
 import org.apache.tiles.request.attribute.AttributeExtractor;
+
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * Extracts attributes from session scope from {@link PageContext}.

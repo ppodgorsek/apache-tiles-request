@@ -21,6 +21,7 @@
 
 package org.apache.tiles.request.servlet;
 
+import java.io.Serial;
 
 /**
  * Exception that indicates that a resource could not be used because it is not
@@ -30,10 +31,14 @@ package org.apache.tiles.request.servlet;
  */
 public class NotAServletEnvironmentException extends RuntimeException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = 4189828725775528652L;
+
+	/**
      * Constructor.
      */
     public NotAServletEnvironmentException() {
+    	super();
     }
 
     /**

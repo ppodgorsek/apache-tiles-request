@@ -21,6 +21,8 @@
 
 package org.apache.tiles.request;
 
+import java.io.Serial;
+
 /**
  * Exception that indicates that a feature could not be used since it is not
  * available.
@@ -29,11 +31,15 @@ package org.apache.tiles.request;
  */
 public class NotAvailableFeatureException extends RequestException {
 
-    /**
+	@Serial
+    private static final long serialVersionUID = -2383908953938583520L;
+
+	/**
      * Constructor.
      *
      */
     public NotAvailableFeatureException() {
+    	super();
     }
 
     /**

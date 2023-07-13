@@ -20,13 +20,13 @@
  */
 package org.apache.tiles.request.servlet.extractor;
 
-import java.util.Enumeration;
 import java.util.Collections;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 import org.apache.tiles.request.attribute.AttributeExtractor;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Extract attributes from session scope.
@@ -62,7 +62,6 @@ public class SessionScopeExtractor implements AttributeExtractor {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Enumeration<String> getKeys() {
         HttpSession session = request.getSession(false);

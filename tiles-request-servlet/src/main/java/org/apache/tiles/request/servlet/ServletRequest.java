@@ -30,21 +30,21 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.tiles.request.AbstractClientRequest;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.attribute.Addable;
 import org.apache.tiles.request.collection.HeaderValuesMap;
 import org.apache.tiles.request.collection.ReadOnlyEnumerationMap;
 import org.apache.tiles.request.collection.ScopeMap;
+import org.apache.tiles.request.servlet.extractor.HeaderExtractor;
 import org.apache.tiles.request.servlet.extractor.ParameterExtractor;
 import org.apache.tiles.request.servlet.extractor.RequestScopeExtractor;
-import org.apache.tiles.request.servlet.extractor.HeaderExtractor;
 import org.apache.tiles.request.servlet.extractor.SessionScopeExtractor;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet-based implementation of the TilesApplicationContext interface.
@@ -177,7 +177,6 @@ public class ServletRequest extends AbstractClientRequest {
 
 
     /** {@inheritDoc} */
-    @SuppressWarnings("unchecked")
     public Map<String, String[]> getParamValues() {
         return request.getParameterMap();
     }

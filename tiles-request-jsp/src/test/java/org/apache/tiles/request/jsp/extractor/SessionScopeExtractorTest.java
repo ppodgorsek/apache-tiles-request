@@ -20,17 +20,20 @@
  */
 package org.apache.tiles.request.jsp.extractor;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Enumeration;
 
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * Tests {@link SessionScopeExtractor}.
@@ -80,7 +83,6 @@ public class SessionScopeExtractorTest {
     /**
      * Test method for {@link org.apache.tiles.request.jsp.extractor.ScopeExtractor#getKeys()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetKeys() {
         expect(context.getSession()).andReturn(session);

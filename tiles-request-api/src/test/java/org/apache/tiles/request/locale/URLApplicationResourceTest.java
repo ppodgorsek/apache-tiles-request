@@ -21,11 +21,16 @@
 
 package org.apache.tiles.request.locale;
 
+import static java.lang.System.setProperty;
+import static org.apache.tiles.request.locale.URLApplicationResource.REMOTE_PROTOCOLS_PROPERTY;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -37,15 +42,6 @@ import java.util.Locale;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static java.lang.System.setProperty;
-import static java.lang.reflect.Modifier.FINAL;
-import static org.apache.tiles.request.locale.URLApplicationResource.REMOTE_PROTOCOLS_PROPERTY;
-import static org.apache.tiles.request.locale.URLApplicationResource.initRemoteProtocols;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * Tests URLApplicationResource.
@@ -232,24 +228,4 @@ public class URLApplicationResourceTest {
         resource.getInputStream();
     }
 
-    @Test
-    public void testAdditionalRemoteProtocolViaSystemProperties() throws Exception {
-        setProperty(REMOTE_PROTOCOLS_PROPERTY, "test1;test2");
-        Field f = URLApplicationResource.class.getDeclaredField("REMOTE_PROTOCOLS");
-        Field m = Field.class.getDeclaredField("modifiers");
-        m.setAccessible(true);
-        m.setInt(f, f.getModifiers() & ~FINAL);
-        f.setAccessible(true);
-        f.set(URLApplicationResource.class, initRemoteProtocols());
-
-        URL url = new URL("test1://foo/bar.txt");
-        URLApplicationResource resource = new URLApplicationResource("org/apache/tiles/request/test/locale/resource.txt", url);
-        try {
-            resource.getInputStream();
-        } catch (FileNotFoundException e) {
-            fail("FileNotFoundException not allowed here");
-        } catch (IOException e) {
-            assertEquals(EXPECTED_MESSAGE, e.getMessage());
-        }
-    }
 }

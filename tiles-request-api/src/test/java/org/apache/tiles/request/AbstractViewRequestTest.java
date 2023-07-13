@@ -20,13 +20,13 @@
  */
 package org.apache.tiles.request;
 
-import static org.junit.Assert.*;
-import static org.easymock.classextension.EasyMock.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -62,14 +62,14 @@ public class AbstractViewRequestTest {
      */
     @Before
     public void setUp() {
-        wrappedRequest = createMock(DispatchRequest.class);
-        request = createMockBuilder(AbstractViewRequest.class).withConstructor(
+        wrappedRequest = EasyMock.createMock(DispatchRequest.class);
+        request = EasyMock.createMockBuilder(AbstractViewRequest.class).withConstructor(
                 wrappedRequest).createMock();
-        applicationContext = createMock(ApplicationContext.class);
+        applicationContext = EasyMock.createMock(ApplicationContext.class);
         applicationScope = new HashMap<String, Object>();
 
-        expect(wrappedRequest.getApplicationContext()).andReturn(applicationContext).anyTimes();
-        expect(applicationContext.getApplicationScope()).andReturn(applicationScope).anyTimes();
+        EasyMock.expect(wrappedRequest.getApplicationContext()).andReturn(applicationContext).anyTimes();
+        EasyMock.expect(applicationContext.getApplicationScope()).andReturn(applicationScope).anyTimes();
     }
 
     /**
@@ -80,13 +80,13 @@ public class AbstractViewRequestTest {
     public void testDispatch() throws IOException {
         Map<String, Object> requestScope = new HashMap<String, Object>();
 
-        expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope);
+        EasyMock.expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope);
         wrappedRequest.include("/my/path.html");
 
-        replay(wrappedRequest, request, applicationContext);
+        EasyMock.replay(wrappedRequest, request, applicationContext);
         request.dispatch("/my/path.html");
         assertTrue((Boolean) requestScope.get(AbstractRequest.FORCE_INCLUDE_ATTRIBUTE_NAME));
-        verify(wrappedRequest, request, applicationContext);
+        EasyMock.verify(wrappedRequest, request, applicationContext);
     }
 
     /**
@@ -97,13 +97,13 @@ public class AbstractViewRequestTest {
     public void testInclude() throws IOException {
         Map<String, Object> requestScope = new HashMap<String, Object>();
 
-        expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope);
+        EasyMock.expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(requestScope);
         wrappedRequest.include("/my/path.html");
 
-        replay(wrappedRequest, request, applicationContext);
+        EasyMock.replay(wrappedRequest, request, applicationContext);
         request.include("/my/path.html");
         assertTrue((Boolean) requestScope.get(AbstractRequest.FORCE_INCLUDE_ATTRIBUTE_NAME));
-        verify(wrappedRequest, request, applicationContext);
+        EasyMock.verify(wrappedRequest, request, applicationContext);
     }
 
     /**
@@ -114,9 +114,9 @@ public class AbstractViewRequestTest {
     public void testDoInclude() throws IOException {
         wrappedRequest.include("/my/path.html");
 
-        replay(wrappedRequest, request, applicationContext);
+        EasyMock.replay(wrappedRequest, request, applicationContext);
         request.doInclude("/my/path.html");
-        verify(wrappedRequest, request, applicationContext);
+        EasyMock.verify(wrappedRequest, request, applicationContext);
     }
 
 }

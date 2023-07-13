@@ -28,14 +28,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Locale;
 
-import javax.servlet.ServletContext;
-
 import org.apache.tiles.request.ApplicationResource;
 import org.apache.tiles.request.locale.URLApplicationResource;
 import org.apache.tiles.request.servlet.ServletApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.web.context.support.ServletContextResourcePatternResolver;
+
+import jakarta.servlet.ServletContext;
 
 /**
  * Servlet-based implementation of the TilesApplicationContext interface that

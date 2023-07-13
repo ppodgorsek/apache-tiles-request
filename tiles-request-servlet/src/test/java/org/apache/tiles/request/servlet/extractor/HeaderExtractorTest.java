@@ -20,16 +20,19 @@
  */
 package org.apache.tiles.request.servlet.extractor;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Enumeration;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Tests {@link HeaderExtractor}.
@@ -66,7 +69,6 @@ public class HeaderExtractorTest {
     /**
      * Test method for {@link org.apache.tiles.request.servlet.extractor.HeaderExtractor#getKeys()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetKeys() {
         Enumeration<String> keys = createMock(Enumeration.class);
@@ -93,7 +95,6 @@ public class HeaderExtractorTest {
     /**
      * Test method for {@link org.apache.tiles.request.servlet.extractor.HeaderExtractor#getValues(java.lang.String)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetValues() {
         Enumeration<String> keys = createMock(Enumeration.class);

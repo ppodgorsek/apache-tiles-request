@@ -20,12 +20,11 @@
  */
 package org.apache.tiles.request.collection;
 
-import org.apache.tiles.request.collection.CollectionUtil;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Enumeration;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 /**
@@ -55,20 +54,19 @@ public class CollectionUtilTest {
     /**
      * Test method for {@link org.apache.tiles.request.RequestUtil#enumerationSize(java.util.Enumeration)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testEnumerationSize() {
-        Enumeration<Object> enumeration = createMock(Enumeration.class);
+        Enumeration<Object> enumeration = EasyMock.createMock(Enumeration.class);
 
-        expect(enumeration.hasMoreElements()).andReturn(true);
-        expect(enumeration.nextElement()).andReturn(1);
-        expect(enumeration.hasMoreElements()).andReturn(true);
-        expect(enumeration.nextElement()).andReturn(1);
-        expect(enumeration.hasMoreElements()).andReturn(false);
+        EasyMock.expect(enumeration.hasMoreElements()).andReturn(true);
+        EasyMock.expect(enumeration.nextElement()).andReturn(1);
+        EasyMock.expect(enumeration.hasMoreElements()).andReturn(true);
+        EasyMock.expect(enumeration.nextElement()).andReturn(1);
+        EasyMock.expect(enumeration.hasMoreElements()).andReturn(false);
 
-        replay(enumeration);
+        EasyMock.replay(enumeration);
         assertEquals(2, CollectionUtil.enumerationSize(enumeration));
-        verify(enumeration);
+        EasyMock.verify(enumeration);
     }
 
 }

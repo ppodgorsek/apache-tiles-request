@@ -20,10 +20,10 @@
  */
 package org.apache.tiles.request.render;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 import org.apache.tiles.request.ApplicationContext;
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,8 +45,8 @@ public class BasicRendererFactoryTest {
     @Before
     public void setUp() {
         rendererFactory = new BasicRendererFactory();
-        ApplicationContext applicationContext = createMock(ApplicationContext.class);
-        replay(applicationContext);
+        ApplicationContext applicationContext = EasyMock.createMock(ApplicationContext.class);
+        EasyMock.replay(applicationContext);
     }
 
     /**
@@ -55,13 +55,13 @@ public class BasicRendererFactoryTest {
      */
     @Test
     public void testInitAndGetRenderer() {
-        Renderer renderer1 = createMock(Renderer.class);
-        Renderer renderer2 = createMock(Renderer.class);
-        Renderer renderer3 = createMock(Renderer.class);
-        Renderer renderer4 = createMock(Renderer.class);
-        ApplicationContext applicationContext = createMock(ApplicationContext.class);
+        Renderer renderer1 = EasyMock.createMock(Renderer.class);
+        Renderer renderer2 = EasyMock.createMock(Renderer.class);
+        Renderer renderer3 = EasyMock.createMock(Renderer.class);
+        Renderer renderer4 = EasyMock.createMock(Renderer.class);
+        ApplicationContext applicationContext = EasyMock.createMock(ApplicationContext.class);
 
-        replay(renderer1, renderer2, renderer3, renderer4, applicationContext);
+        EasyMock.replay(renderer1, renderer2, renderer3, renderer4, applicationContext);
         rendererFactory.registerRenderer("string", renderer1);
         rendererFactory.registerRenderer("test", renderer2);
         rendererFactory.registerRenderer("test2", renderer3);
@@ -74,7 +74,7 @@ public class BasicRendererFactoryTest {
         assertSame(renderer3, renderer);
         renderer = rendererFactory.getRenderer(null);
         assertSame(renderer4, renderer);
-        verify(renderer1, renderer2, renderer3, renderer4, applicationContext);
+        EasyMock.verify(renderer1, renderer2, renderer3, renderer4, applicationContext);
     }
 
     /**
@@ -83,13 +83,13 @@ public class BasicRendererFactoryTest {
      */
     @Test(expected = NoSuchRendererException.class)
     public void testGetRendererException() {
-        Renderer renderer1 = createMock(Renderer.class);
-        Renderer renderer2 = createMock(Renderer.class);
-        Renderer renderer3 = createMock(Renderer.class);
-        Renderer renderer4 = createMock(Renderer.class);
-        ApplicationContext applicationContext = createMock(ApplicationContext.class);
+        Renderer renderer1 = EasyMock.createMock(Renderer.class);
+        Renderer renderer2 = EasyMock.createMock(Renderer.class);
+        Renderer renderer3 = EasyMock.createMock(Renderer.class);
+        Renderer renderer4 = EasyMock.createMock(Renderer.class);
+        ApplicationContext applicationContext = EasyMock.createMock(ApplicationContext.class);
 
-        replay(renderer1, renderer2, renderer3, renderer4, applicationContext);
+        EasyMock.replay(renderer1, renderer2, renderer3, renderer4, applicationContext);
         rendererFactory.registerRenderer("string", renderer1);
         rendererFactory.registerRenderer("test", renderer2);
         rendererFactory.registerRenderer("test2", renderer3);
@@ -97,7 +97,7 @@ public class BasicRendererFactoryTest {
         try {
             rendererFactory.getRenderer("nothing");
         } finally {
-            verify(renderer1, renderer2, renderer3, renderer4, applicationContext);
+        	EasyMock.verify(renderer1, renderer2, renderer3, renderer4, applicationContext);
         }
     }
 

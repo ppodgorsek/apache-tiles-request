@@ -22,10 +22,10 @@ package org.apache.tiles.request.servlet.extractor;
 
 import java.util.Enumeration;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.tiles.request.attribute.EnumeratedValuesExtractor;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Extract header values from an HTTP request.
@@ -56,7 +56,6 @@ public class HeaderExtractor implements EnumeratedValuesExtractor {
         this.response = response;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Enumeration<String> getKeys() {
         return request.getHeaderNames();
@@ -67,7 +66,6 @@ public class HeaderExtractor implements EnumeratedValuesExtractor {
         return request.getHeader(key);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Enumeration<String> getValues(String key) {
         return request.getHeaders(key);

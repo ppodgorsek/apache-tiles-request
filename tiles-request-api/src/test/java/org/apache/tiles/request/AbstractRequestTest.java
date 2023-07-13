@@ -20,12 +20,13 @@
  */
 package org.apache.tiles.request;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 /**
@@ -40,15 +41,15 @@ public class AbstractRequestTest {
      */
     @Test
     public void testSetForceInclude() {
-        AbstractRequest request = createMockBuilder(AbstractRequest.class).createMock();
+        AbstractRequest request = EasyMock.createMockBuilder(AbstractRequest.class).createMock();
         Map<String, Object> scope = new HashMap<String, Object>();
 
-        expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(scope).anyTimes();
+        EasyMock.expect(request.getContext(Request.REQUEST_SCOPE)).andReturn(scope).anyTimes();
 
-        replay(request);
+        EasyMock.replay(request);
         assertFalse(request.isForceInclude());
         request.setForceInclude(true);
         assertTrue(request.isForceInclude());
-        verify(request);
+        EasyMock.verify(request);
     }
 }

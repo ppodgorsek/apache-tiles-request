@@ -21,12 +21,8 @@
 package org.apache.tiles.request;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.replay;
-import static org.easymock.classextension.EasyMock.verify;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -38,6 +34,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.tiles.request.attribute.Addable;
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 /**
@@ -64,7 +61,7 @@ public class DefaultRequestWrapperTest {
      * @return the Request object.
      */
     protected Request createMockRequest() {
-        Request wrappedRequest = createMock(Request.class);
+        Request wrappedRequest = EasyMock.createMock(Request.class);
         return wrappedRequest;
     }
 
@@ -75,98 +72,93 @@ public class DefaultRequestWrapperTest {
     public void testGetWrappedRequest() {
         Request wrappedRequest = createMockRequest();
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(wrappedRequest, request.getWrappedRequest());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getHeader()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetHeader() {
         Request wrappedRequest = createMockRequest();
-        Map<String, String> header = createMock(Map.class);
+        Map<String, String> header = EasyMock.createMock(Map.class);
 
         expect(wrappedRequest.getHeader()).andReturn(header);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(header, request.getHeader());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getResponseHeaders()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetResponseHeaders() {
         Request wrappedRequest = createMockRequest();
-        Addable<String> header = createMock(Addable.class);
+        Addable<String> header = EasyMock.createMock(Addable.class);
 
         expect(wrappedRequest.getResponseHeaders()).andReturn(header);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(header, request.getResponseHeaders());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getHeaderValues()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetHeaderValues() {
         Request wrappedRequest = createMockRequest();
-        Map<String, String[]> header = createMock(Map.class);
+        Map<String, String[]> header = EasyMock.createMock(Map.class);
 
         expect(wrappedRequest.getHeaderValues()).andReturn(header);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(header, request.getHeaderValues());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getContext(java.lang.String)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetContext() {
         Request wrappedRequest = createMockRequest();
-        Map<String, Object> context = createMock(Map.class);
+        Map<String, Object> context = EasyMock.createMock(Map.class);
 
         RequestWrapper request = createRequestWrapper(wrappedRequest);
 
         expect(wrappedRequest.getContext("one")).andReturn(context);
 
-        replay(wrappedRequest, context);
+        EasyMock.replay(wrappedRequest, context);
         assertEquals(context, request.getContext("one"));
-        verify(wrappedRequest, context);
+        EasyMock.verify(wrappedRequest, context);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getAvailableScopes()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetAvailableScopes() {
         Request wrappedRequest = createMockRequest();
-        Map<String, Object> context = createMock(Map.class);
+        Map<String, Object> context = EasyMock.createMock(Map.class);
 
         RequestWrapper request = createRequestWrapper(wrappedRequest);
 
         String[] scopes = new String[] {"one", "two", "three"};
         expect(wrappedRequest.getAvailableScopes()).andReturn(Arrays.asList(scopes));
 
-        replay(wrappedRequest, context);
+        EasyMock.replay(wrappedRequest, context);
         assertArrayEquals(scopes, request.getAvailableScopes().toArray());
-        verify(wrappedRequest, context);
+        EasyMock.verify(wrappedRequest, context);
     }
 
     /**
@@ -175,14 +167,14 @@ public class DefaultRequestWrapperTest {
     @Test
     public void testGetApplicationContext() {
         Request wrappedRequest = createMockRequest();
-        ApplicationContext applicationContext = createMock(ApplicationContext.class);
+        ApplicationContext applicationContext = EasyMock.createMock(ApplicationContext.class);
 
         expect(wrappedRequest.getApplicationContext()).andReturn(applicationContext);
 
-        replay(wrappedRequest, applicationContext);
+        EasyMock.replay(wrappedRequest, applicationContext);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(applicationContext, request.getApplicationContext());
-        verify(wrappedRequest, applicationContext);
+        EasyMock.verify(wrappedRequest, applicationContext);
     }
 
     /**
@@ -192,14 +184,14 @@ public class DefaultRequestWrapperTest {
     @Test
     public void testGetOutputStream() throws IOException {
         Request wrappedRequest = createMockRequest();
-        OutputStream stream = createMock(OutputStream.class);
+        OutputStream stream = EasyMock.createMock(OutputStream.class);
 
         expect(wrappedRequest.getOutputStream()).andReturn(stream);
 
-        replay(wrappedRequest, stream);
+        EasyMock.replay(wrappedRequest, stream);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(stream, request.getOutputStream());
-        verify(wrappedRequest, stream);
+        EasyMock.verify(wrappedRequest, stream);
     }
 
     /**
@@ -209,14 +201,14 @@ public class DefaultRequestWrapperTest {
     @Test
     public void testGetWriter() throws IOException {
         Request wrappedRequest = createMockRequest();
-        Writer writer = createMock(Writer.class);
+        Writer writer = EasyMock.createMock(Writer.class);
 
         expect(wrappedRequest.getWriter()).andReturn(writer);
 
-        replay(wrappedRequest, writer);
+        EasyMock.replay(wrappedRequest, writer);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(writer, request.getWriter());
-        verify(wrappedRequest, writer);
+        EasyMock.verify(wrappedRequest, writer);
     }
 
     /**
@@ -226,14 +218,14 @@ public class DefaultRequestWrapperTest {
     @Test
     public void testGetPrintWriter() throws IOException {
         Request wrappedRequest = createMockRequest();
-        PrintWriter writer = createMock(PrintWriter.class);
+        PrintWriter writer = EasyMock.createMock(PrintWriter.class);
 
         expect(wrappedRequest.getPrintWriter()).andReturn(writer);
 
-        replay(wrappedRequest, writer);
+        EasyMock.replay(wrappedRequest, writer);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(writer, request.getPrintWriter());
-        verify(wrappedRequest, writer);
+        EasyMock.verify(wrappedRequest, writer);
     }
 
     /**
@@ -245,44 +237,42 @@ public class DefaultRequestWrapperTest {
 
         expect(wrappedRequest.isResponseCommitted()).andReturn(Boolean.TRUE);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertTrue(request.isResponseCommitted());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getParam()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetParam() {
         Request wrappedRequest = createMockRequest();
-        Map<String, String> param = createMock(Map.class);
+        Map<String, String> param = EasyMock.createMock(Map.class);
 
         expect(wrappedRequest.getParam()).andReturn(param);
 
-        replay(wrappedRequest, param);
+        EasyMock.replay(wrappedRequest, param);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(param, request.getParam());
-        verify(wrappedRequest, param);
+        EasyMock.verify(wrappedRequest, param);
     }
 
     /**
      * Test method for {@link org.apache.tiles.request.DefaultRequestWrapper#getParamValues()}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetParamValues() {
         Request wrappedRequest = createMockRequest();
-        Map<String, String[]> param = createMock(Map.class);
+        Map<String, String[]> param = EasyMock.createMock(Map.class);
 
         expect(wrappedRequest.getParamValues()).andReturn(param);
 
-        replay(wrappedRequest, param);
+        EasyMock.replay(wrappedRequest, param);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(param, request.getParamValues());
-        verify(wrappedRequest, param);
+        EasyMock.verify(wrappedRequest, param);
     }
 
     /**
@@ -295,10 +285,10 @@ public class DefaultRequestWrapperTest {
 
         expect(wrappedRequest.getRequestLocale()).andReturn(param);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertEquals(param, request.getRequestLocale());
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
     /**
@@ -310,10 +300,10 @@ public class DefaultRequestWrapperTest {
 
         expect(wrappedRequest.isUserInRole("myrole")).andReturn(Boolean.TRUE);
 
-        replay(wrappedRequest);
+        EasyMock.replay(wrappedRequest);
         RequestWrapper request = createRequestWrapper(wrappedRequest);
         assertTrue(request.isUserInRole("myrole"));
-        verify(wrappedRequest);
+        EasyMock.verify(wrappedRequest);
     }
 
 }

@@ -20,9 +20,12 @@
  */
 package org.apache.tiles.request.collection;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -52,7 +55,6 @@ public class RemovableKeySetTest {
     /**
      * Sets up the test.
      */
-    @SuppressWarnings("unchecked")
     @Before
     public void setUp() {
         extractor = createMock(HasRemovableKeys.class);
@@ -105,7 +107,6 @@ public class RemovableKeySetTest {
     /**
      * Test method for {@link org.apache.tiles.request.collection.RemovableKeySet#retainAll(java.util.Collection)}.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void testRetainAll() {
         Enumeration<String> keys = createMock(Enumeration.class);

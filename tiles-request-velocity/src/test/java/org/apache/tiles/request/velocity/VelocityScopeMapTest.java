@@ -20,8 +20,13 @@
  */
 package org.apache.tiles.request.velocity;
 
-import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
@@ -72,7 +77,7 @@ public class VelocityScopeMapTest {
      */
     @Test
     public void testIsEmpty() {
-        expect(request.getKeys()).andReturn(new Object[0]);
+        expect(request.getKeys()).andReturn(new String[0]);
 
         replay(request);
         assertTrue(map.isEmpty());
@@ -84,7 +89,7 @@ public class VelocityScopeMapTest {
      */
     @Test
     public void testIsEmptyFalse() {
-        expect(request.getKeys()).andReturn(new Object[] {"one", "two"});
+        expect(request.getKeys()).andReturn(new String[] {"one", "two"});
 
         replay(request);
         assertFalse(map.isEmpty());
@@ -96,7 +101,7 @@ public class VelocityScopeMapTest {
      */
     @Test
     public void testKeySet() {
-        expect(request.getKeys()).andReturn(new Object[] {"one", "two"});
+        expect(request.getKeys()).andReturn(new String[] {"one", "two"});
 
         replay(request);
         Set<String> set = map.keySet();
@@ -111,7 +116,7 @@ public class VelocityScopeMapTest {
      */
     @Test
     public void testSize() {
-        expect(request.getKeys()).andReturn(new Object[] {"one", "two"});
+        expect(request.getKeys()).andReturn(new String[] {"one", "two"});
 
         replay(request);
         assertEquals(2, map.size());

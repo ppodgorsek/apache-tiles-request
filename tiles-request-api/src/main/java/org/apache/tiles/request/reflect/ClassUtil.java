@@ -23,6 +23,7 @@ package org.apache.tiles.request.reflect;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -40,6 +41,7 @@ public final class ClassUtil {
      * Constructor, private to avoid instantiation.
      */
     private ClassUtil() {
+    	super();
     }
 
     /**
@@ -95,8 +97,8 @@ public final class ClassUtil {
         }
         try {
             Class<? extends Object> namedClass = getClass(className, Object.class);
-            return namedClass.newInstance();
-        } catch (ClassNotFoundException e) {
+            return namedClass.getDeclaredConstructor().newInstance();
+        } catch (ClassNotFoundException | NoSuchMethodException e) {
             if (returnNull) {
                 return null;
             }
@@ -105,7 +107,7 @@ public final class ClassUtil {
         } catch (IllegalAccessException e) {
             throw new CannotInstantiateObjectException(
                     "Unable to access factory class: '" + className + "'", e);
-        } catch (InstantiationException e) {
+        } catch (InstantiationException | InvocationTargetException e) {
             throw new CannotInstantiateObjectException(
                     "Unable to instantiate factory class: '"
                             + className

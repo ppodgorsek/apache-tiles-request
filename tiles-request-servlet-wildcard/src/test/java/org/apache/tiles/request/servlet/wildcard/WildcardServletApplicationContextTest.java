@@ -20,21 +20,20 @@
  */
 package org.apache.tiles.request.servlet.wildcard;
 
-import junit.framework.TestCase;
-
-import org.apache.tiles.request.locale.URLApplicationResource;
-import org.easymock.EasyMock;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
-import java.util.HashSet;
 
-import javax.servlet.ServletContext;
+import org.apache.tiles.request.locale.URLApplicationResource;
+import org.easymock.EasyMock;
+
+import jakarta.servlet.ServletContext;
+import junit.framework.TestCase;
 
 
 /**
