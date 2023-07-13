@@ -20,6 +20,7 @@
  */
 package org.apache.tiles.request.render;
 
+import java.io.Serial;
 
 /**
  * It is raised when a named renderer has not been found with that name.

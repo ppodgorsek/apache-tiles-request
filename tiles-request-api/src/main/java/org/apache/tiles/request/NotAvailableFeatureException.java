@@ -21,6 +21,8 @@
 
 package org.apache.tiles.request;
 
+import java.io.Serial;
+
 /**
  * Exception that indicates that a feature could not be used since it is not
  * available.

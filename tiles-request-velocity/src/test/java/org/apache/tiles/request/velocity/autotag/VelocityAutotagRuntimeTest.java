@@ -21,10 +21,7 @@
 package org.apache.tiles.request.velocity.autotag;
 
 import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -41,6 +38,7 @@ import org.apache.velocity.runtime.parser.node.ASTBlock;
 import org.apache.velocity.runtime.parser.node.ASTMap;
 import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.tools.view.ViewToolContext;
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 import jakarta.servlet.ServletContext;
@@ -66,12 +64,12 @@ public class VelocityAutotagRuntimeTest {
         expect(viewContext.getServletContext()).andReturn(servletContext);
         expect(servletContext.getAttribute(ApplicationAccess.APPLICATION_CONTEXT_ATTRIBUTE)).andReturn(applicationContext);
 
-        replay(context, writer, node, viewContext, request, response, servletContext, applicationContext);
+        EasyMock.replay(context, writer, node, viewContext, request, response, servletContext, applicationContext);
         VelocityAutotagRuntime runtime = new VelocityAutotagRuntime();
         runtime.render(context, writer, node);
         Request velocityRequest = runtime.createRequest();
         assertTrue(velocityRequest instanceof VelocityRequest);
-        verify(context, writer, node, viewContext, request, response, servletContext, applicationContext);
+        EasyMock.verify(context, writer, node, viewContext, request, response, servletContext, applicationContext);
     }
 
     @Test
@@ -81,12 +79,12 @@ public class VelocityAutotagRuntimeTest {
         Node node = createMock(Node.class);
         ASTBlock block = createMock(ASTBlock.class);
         expect(node.jjtGetChild(1)).andReturn(block);
-        replay(context, writer, node, block);
+        EasyMock.replay(context, writer, node, block);
         VelocityAutotagRuntime runtime = new VelocityAutotagRuntime();
         runtime.render(context, writer, node);
         ModelBody modelBody = runtime.createModelBody();
         assertTrue(modelBody instanceof VelocityModelBody);
-        verify(context, writer, node, block);
+        EasyMock.verify(context, writer, node, block);
     }
 
     @Test
@@ -95,13 +93,12 @@ public class VelocityAutotagRuntimeTest {
         Writer writer = createMock(Writer.class);
         Node node = createMock(Node.class);
         ASTMap astMap = createMock(ASTMap.class);
-        @SuppressWarnings("unchecked")
         Map<String, Object> params = createMock(Map.class);
         expect(node.jjtGetChild(0)).andReturn(astMap);
         expect(astMap.value(context)).andReturn(params);
-        expect(params.get(eq("notnullParam"))).andReturn(new Integer(42)).anyTimes();
-        expect(params.get(eq("nullParam"))).andReturn(null).anyTimes();
-        replay(context, writer, node, astMap, params);
+        expect(params.get(EasyMock.eq("notnullParam"))).andReturn(new Integer(42)).anyTimes();
+        expect(params.get(EasyMock.eq("nullParam"))).andReturn(null).anyTimes();
+        EasyMock.replay(context, writer, node, astMap, params);
         VelocityAutotagRuntime runtime = new VelocityAutotagRuntime();
         runtime.render(context, writer, node);
         Object notnullParam = runtime.getParameter("notnullParam", Object.class, null);
@@ -112,6 +109,6 @@ public class VelocityAutotagRuntimeTest {
         assertEquals(null, nullParam);
         assertEquals(42, notnullParamDefault);
         assertEquals(24, nullParamDefault);
-        verify(context, writer, node, astMap, params);
+        EasyMock.verify(context, writer, node, astMap, params);
     }
 }

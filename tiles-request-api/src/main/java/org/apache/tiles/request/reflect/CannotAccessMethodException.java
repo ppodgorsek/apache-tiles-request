@@ -20,6 +20,8 @@
  */
 package org.apache.tiles.request.reflect;
 
+import java.io.Serial;
+
 import org.apache.tiles.request.RequestException;
 
 /**

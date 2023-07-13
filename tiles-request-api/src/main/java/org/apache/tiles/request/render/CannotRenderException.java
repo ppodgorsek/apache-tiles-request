@@ -20,6 +20,7 @@
  */
 package org.apache.tiles.request.render;
 
+import java.io.Serial;
 
 /**
  * Indicates that something went wrong during the rendering process.

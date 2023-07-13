@@ -20,6 +20,8 @@
  */
 package org.apache.tiles.request;
 
+import java.io.Serial;
+
 /**
  * Thrown when something related to a request fails.
  *

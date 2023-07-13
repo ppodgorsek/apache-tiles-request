@@ -47,6 +47,14 @@
 			<artifactId>tiles-autotag-core-runtime</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>com.github.ppodgorsek.apache</groupId>
+			<artifactId>velocity-tools-generic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ppodgorsek.apache</groupId>
+			<artifactId>velocity-tools-view</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
@@ -60,8 +68,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.velocity.tools</groupId>
-			<artifactId>velocity-tools-generic</artifactId>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-engine-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.easymock</groupId>
