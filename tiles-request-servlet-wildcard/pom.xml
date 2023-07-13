@@ -26,13 +26,13 @@
 	<parent>
 		<groupId>com.github.ppodgorsek.apache</groupId>
 		<artifactId>tiles-request</artifactId>
-		<version>2.0-SNAPSHOT</version>
+		<version>2.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>tiles-request-servlet-wildcard</artifactId>
 	<packaging>jar</packaging>
 	<name>Tiles Request - Wildcard file loading in Servlets</name>
-	<description>Wildcard file loading in Servlets: Allows to load resources using wildcards.</description>
+	<description>Wildcard file loading in Servlets: Allows to load resources using wildcards. This project has been migrated to Jakarta.</description>
 
 	<properties>
 		<tiles.osgi.symbolicName>org.apache.tiles.servlet.wildcard</tiles.osgi.symbolicName>
